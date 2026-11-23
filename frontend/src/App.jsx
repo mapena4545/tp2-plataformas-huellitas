@@ -9,6 +9,7 @@ import Register from "./pages/Register.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
 import NotFound from "./pages/NotFound.jsx";
 import Users from "./pages/admin/Users.jsx";
+import Services from "./pages/admin/Services.jsx";
 
 export default function App() {
   return (
@@ -23,6 +24,7 @@ export default function App() {
           <Route path="/panel" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
 
           <Route path="/usuarios" element={<ProtectedRoute roles={["admin"]}><Users /></ProtectedRoute>} />
+          <Route path="/servicios" element={<ProtectedRoute roles={["admin"]}><Services /></ProtectedRoute>} />
 
           <Route path="*" element={<NotFound />} />
         </Routes>
