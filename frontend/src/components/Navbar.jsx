@@ -11,11 +11,13 @@ const LINKS = {
   veterinario: [
     { to: "/panel", label: "Inicio" },
     { to: "/agenda", label: "Agenda" },
+    { to: "/pacientes", label: "Pacientes" },
   ],
   admin: [
     { to: "/panel", label: "Inicio" },
     { to: "/usuarios", label: "Usuarios" },
     { to: "/servicios", label: "Servicios" },
+    { to: "/pacientes", label: "Pacientes" },
   ],
 };
 
