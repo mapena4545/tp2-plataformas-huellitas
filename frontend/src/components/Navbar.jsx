@@ -5,6 +5,7 @@ import { ROLES } from "../utils/helpers.js";
 const LINKS = {
   cliente: [
     { to: "/panel", label: "Inicio" },
+    { to: "/mascotas", label: "Mis mascotas" },
   ],
   veterinario: [
     { to: "/panel", label: "Inicio" },

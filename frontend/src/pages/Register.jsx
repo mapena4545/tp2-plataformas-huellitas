@@ -17,7 +17,7 @@ export default function Register() {
     if (form.password.length < 4) return setError("La contraseña debe tener al menos 4 caracteres.");
     if (form.password !== form.confirm) return setError("Las contraseñas no coinciden.");
     const res = register(form);
-    if (res.ok) navigate("/panel");
+    if (res.ok) navigate("/mascotas");
     else setError(res.error);
   };
 
