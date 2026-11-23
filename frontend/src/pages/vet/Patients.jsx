@@ -38,7 +38,7 @@ export default function Patients() {
               {list.map((p) => (
                 <tr key={p.id}>
                   <td><strong>{p.name}</strong></td>
-                  <td>{SPECIES[p.species].label}{p.breed && ` · ${p.breed}`}</td>
+                  <td>{SPECIES[p.species].label}{p.breed && ` - ${p.breed}`}</td>
                   <td>{ageFrom(p.birthYear)}</td>
                   <td>{findUser(p.ownerId)?.name ?? "—"}</td>
                   <td>{records.filter((r) => r.petId === p.id).length}</td>

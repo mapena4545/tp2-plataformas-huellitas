@@ -8,6 +8,7 @@ import Login from "./pages/Login.jsx";
 import Register from "./pages/Register.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
 import NotFound from "./pages/NotFound.jsx";
+import PetHistory from "./pages/PetHistory.jsx";
 import MyPets from "./pages/client/MyPets.jsx";
 import MyAppointments from "./pages/client/MyAppointments.jsx";
 import Agenda from "./pages/vet/Agenda.jsx";
@@ -26,6 +27,7 @@ export default function App() {
           <Route path="/registro" element={<Register />} />
 
           <Route path="/panel" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+          <Route path="/pacientes/:id" element={<ProtectedRoute><PetHistory /></ProtectedRoute>} />
 
           <Route path="/mascotas" element={<ProtectedRoute roles={["cliente"]}><MyPets /></ProtectedRoute>} />
           <Route path="/turnos" element={<ProtectedRoute roles={["cliente"]}><MyAppointments /></ProtectedRoute>} />
