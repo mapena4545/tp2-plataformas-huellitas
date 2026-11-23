@@ -1,8 +1,22 @@
+import { Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar.jsx";
+import Footer from "./components/Footer.jsx";
+
+import Home from "./pages/Home.jsx";
+import NotFound from "./pages/NotFound.jsx";
+
 export default function App() {
   return (
-    <main style={{ fontFamily: "Arial, sans-serif", padding: "2rem" }}>
-      <h1>Huellitas</h1>
-      <p>Veterinaria de barrio. Proyecto en construcción.</p>
-    </main>
+    <div className="app">
+      <Navbar />
+      <main className="container">
+        <Routes>
+          <Route path="/" element={<Home />} />
+
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </main>
+      <Footer />
+    </div>
   );
 }
