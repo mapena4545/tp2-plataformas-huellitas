@@ -11,6 +11,7 @@ const LINKS = {
   ],
   admin: [
     { to: "/panel", label: "Inicio" },
+    { to: "/usuarios", label: "Usuarios" },
   ],
 };
 
