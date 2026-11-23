@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
+import { useData } from "../context/DataContext.jsx";
+import { formatPrice } from "../utils/helpers.js";
 
 export default function Home() {
+  const { services } = useData();
+
   return (
     <>
       <section className="hero">
@@ -15,6 +19,22 @@ export default function Home() {
             <Link to="/registro" className="btn btn-primary btn-lg">Sacar turno</Link>
             <Link to="/login" className="btn btn-ghost btn-lg">Ya tengo cuenta</Link>
           </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Servicios</h2>
+        <div className="grid grid-4">
+          {services.filter((s) => s.active).map((s) => (
+            <div key={s.id} className="card service-card">
+              <h3>{s.name}</h3>
+              <p className="muted small">{s.description}</p>
+              <div className="service-meta">
+                <strong>{formatPrice(s.price)}</strong>
+                <span className="muted small">{s.duration} min</span>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
