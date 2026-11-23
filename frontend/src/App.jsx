@@ -10,6 +10,7 @@ import Dashboard from "./pages/Dashboard.jsx";
 import NotFound from "./pages/NotFound.jsx";
 import MyPets from "./pages/client/MyPets.jsx";
 import MyAppointments from "./pages/client/MyAppointments.jsx";
+import Agenda from "./pages/vet/Agenda.jsx";
 import Users from "./pages/admin/Users.jsx";
 import Services from "./pages/admin/Services.jsx";
 
@@ -28,6 +29,10 @@ export default function App() {
 
           <Route path="/mascotas" element={<ProtectedRoute roles={["cliente"]}><MyPets /></ProtectedRoute>} />
           <Route path="/turnos" element={<ProtectedRoute roles={["cliente"]}><MyAppointments /></ProtectedRoute>} />
+
+
+          <Route path="/agenda" element={<ProtectedRoute roles={["veterinario"]}><Agenda /></ProtectedRoute>} />
+
 
           <Route path="/usuarios" element={<ProtectedRoute roles={["admin"]}><Users /></ProtectedRoute>} />
           <Route path="/servicios" element={<ProtectedRoute roles={["admin"]}><Services /></ProtectedRoute>} />

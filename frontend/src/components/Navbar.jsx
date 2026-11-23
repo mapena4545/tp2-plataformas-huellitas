@@ -10,6 +10,7 @@ const LINKS = {
   ],
   veterinario: [
     { to: "/panel", label: "Inicio" },
+    { to: "/agenda", label: "Agenda" },
   ],
   admin: [
     { to: "/panel", label: "Inicio" },
