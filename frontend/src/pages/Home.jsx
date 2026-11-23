@@ -1,9 +1,12 @@
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext.jsx";
 import { useData } from "../context/DataContext.jsx";
 import { formatPrice } from "../utils/helpers.js";
 
 export default function Home() {
+  const { user } = useAuth();
   const { services } = useData();
+  if (user) return <Navigate to="/panel" replace />;
 
   return (
     <>
