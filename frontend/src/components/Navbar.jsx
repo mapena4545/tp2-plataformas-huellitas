@@ -6,6 +6,7 @@ const LINKS = {
   cliente: [
     { to: "/panel", label: "Inicio" },
     { to: "/mascotas", label: "Mis mascotas" },
+    { to: "/turnos", label: "Mis turnos" },
   ],
   veterinario: [
     { to: "/panel", label: "Inicio" },
