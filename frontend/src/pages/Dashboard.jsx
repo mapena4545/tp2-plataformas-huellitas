@@ -3,7 +3,7 @@ import { useAuth } from "../context/AuthContext.jsx";
 import { useData } from "../context/DataContext.jsx";
 import { PageHeader, StatCard, EmptyState } from "../components/ui.jsx";
 import AppointmentCard from "../components/AppointmentCard.jsx";
-import { todayISO, formatDate, sortByDateTime } from "../utils/helpers.js";
+import { todayISO, formatDate, formatPrice, sortByDateTime, STATUS } from "../utils/helpers.js";
 
 const isActive = (a) => ["pendiente", "confirmado"].includes(a.status);
 
@@ -16,6 +16,7 @@ export default function Dashboard() {
       <PageHeader title={`Hola, ${firstName}`} subtitle={formatDate(todayISO())} />
       {user.role === "cliente" && <ClientDashboard />}
       {user.role === "veterinario" && <VetDashboard />}
+      {user.role === "admin" && <AdminDashboard />}
     </>
   );
 }
@@ -76,6 +77,45 @@ function VetDashboard() {
         ) : (
           <EmptyState text="No tenés turnos para hoy." />
         )}
+      </section>
+    </>
+  );
+}
+
+function AdminDashboard() {
+  const { users, pets, appointments, findService, resetDemo } = useData();
+  const income = appointments
+    .filter((a) => a.status === "atendido")
+    .reduce((sum, a) => sum + (findService(a.serviceId)?.price ?? 0), 0);
+  const byStatus = Object.keys(STATUS).map((s) => ({ s, n: appointments.filter((a) => a.status === s).length }));
+  const total = appointments.length || 1;
+
+  return (
+    <>
+      <div className="grid grid-4">
+        <StatCard label="Usuarios" value={users.length} />
+        <StatCard label="Mascotas" value={pets.length} />
+        <StatCard label="Turnos" value={appointments.length} />
+        <StatCard label="Facturado (atendidos)" value={formatPrice(income)} />
+      </div>
+
+      <section className="card">
+        <h2>Turnos por estado</h2>
+        {byStatus.map(({ s, n }) => (
+          <div key={s} className="bar-row">
+            <span>{STATUS[s].label}</span>
+            <div className="bar"><div className={`bar-fill tone-${STATUS[s].tone}`} style={{ width: `${(n / total) * 100}%` }} /></div>
+            <strong>{n}</strong>
+          </div>
+        ))}
+      </section>
+
+      <section className="card">
+        <h2>Datos de demostración</h2>
+        <p className="muted small">Los datos se guardan en el navegador (localStorage). Podés volver a los datos iniciales en cualquier momento.</p>
+        <button className="btn btn-ghost" onClick={() => confirm("¿Restaurar los datos de ejemplo?") && resetDemo()}>
+          Restaurar datos de ejemplo
+        </button>
       </section>
     </>
   );
