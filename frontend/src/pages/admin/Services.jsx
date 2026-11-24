@@ -42,7 +42,7 @@ export default function Services() {
               <p className="muted small">{s.description}</p>
               <div className="service-meta">
                 <strong>{formatPrice(s.price)}</strong>
-                <span className="muted small">{s.duration} min · {appointments.filter((a) => a.serviceId === s.id).length} turnos</span>
+                <span className="muted small">{s.duration} min - {appointments.filter((a) => a.serviceId === s.id).length} turnos</span>
               </div>
               <div className="card-actions">
                 <button className="btn btn-ghost" onClick={() => setEditing(s)}>Editar</button>

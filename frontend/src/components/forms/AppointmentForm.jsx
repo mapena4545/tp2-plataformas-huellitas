@@ -95,7 +95,7 @@ export default function AppointmentForm({ onSubmit, onCancel }) {
         <input value={form.reason} onChange={set("reason")} placeholder="Ej: no quiere comer" />
       </Field>
 
-      {service && <p className="muted small">Valor estimado: <strong>{formatPrice(service.price)}</strong> · {service.duration} min</p>}
+      {service && <p className="muted small">Valor estimado: <strong>{formatPrice(service.price)}</strong> - {service.duration} min</p>}
       {error && <p className="alert">{error}</p>}
 
       <div className="form-actions">

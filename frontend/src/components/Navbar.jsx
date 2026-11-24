@@ -17,6 +17,7 @@ const LINKS = {
     { to: "/panel", label: "Inicio" },
     { to: "/usuarios", label: "Usuarios" },
     { to: "/servicios", label: "Servicios" },
+    { to: "/admin/turnos", label: "Turnos" },
     { to: "/pacientes", label: "Pacientes" },
   ],
 };

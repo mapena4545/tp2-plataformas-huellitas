@@ -20,12 +20,12 @@ export default function AppointmentCard({ appointment: a, show = [], children })
       <div className="appt-body">
         <div className="appt-title">
           {pet ? <Link to={`/pacientes/${pet.id}`}>{pet.name}</Link> : "Mascota eliminada"}
-          <span className="muted">· {service?.name ?? "Servicio"}</span>
+          <span className="muted">- {service?.name ?? "Servicio"}</span>
         </div>
         <div className="muted small">
           {show.includes("vet") && <>Atiende: {vet?.name ?? "—"} </>}
           {show.includes("owner") && <>Dueño/a: {owner?.name ?? "—"} </>}
-          {a.reason && <>· “{a.reason}”</>}
+          {a.reason && <>- “{a.reason}”</>}
         </div>
       </div>
 

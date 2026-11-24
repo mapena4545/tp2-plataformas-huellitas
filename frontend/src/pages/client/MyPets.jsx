@@ -38,7 +38,7 @@ export default function MyPets() {
             <div key={p.id} className="card pet-card">
               <h3>{p.name}</h3>
               <p className="muted small">
-                {SPECIES[p.species].label}{p.breed && ` · ${p.breed}`} · {ageFrom(p.birthYear)}{p.weight && ` · ${p.weight} kg`}
+                {SPECIES[p.species].label}{p.breed && ` - ${p.breed}`} - {ageFrom(p.birthYear)}{p.weight && ` - ${p.weight} kg`}
               </p>
               <div className="card-actions">
                 <Link to={`/pacientes/${p.id}`} className="btn btn-soft">Historia clínica</Link>

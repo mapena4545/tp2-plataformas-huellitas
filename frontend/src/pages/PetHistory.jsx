@@ -65,7 +65,7 @@ export default function PetHistory() {
       </section>
 
       {adding && (
-        <Modal title={`Nueva nota · ${pet.name}`} onClose={() => setAdding(false)}>
+        <Modal title={`Nueva nota - ${pet.name}`} onClose={() => setAdding(false)}>
           <RecordForm onSubmit={handleAdd} onCancel={() => setAdding(false)} />
         </Modal>
       )}

@@ -15,6 +15,7 @@ import Agenda from "./pages/vet/Agenda.jsx";
 import Patients from "./pages/vet/Patients.jsx";
 import Users from "./pages/admin/Users.jsx";
 import Services from "./pages/admin/Services.jsx";
+import AllAppointments from "./pages/admin/AllAppointments.jsx";
 
 export default function App() {
   return (
@@ -37,6 +38,7 @@ export default function App() {
 
           <Route path="/usuarios" element={<ProtectedRoute roles={["admin"]}><Users /></ProtectedRoute>} />
           <Route path="/servicios" element={<ProtectedRoute roles={["admin"]}><Services /></ProtectedRoute>} />
+          <Route path="/admin/turnos" element={<ProtectedRoute roles={["admin"]}><AllAppointments /></ProtectedRoute>} />
 
           <Route path="*" element={<NotFound />} />
         </Routes>
