@@ -23,18 +23,35 @@ export default function Dashboard() {
 
 function ClientDashboard() {
   const { user } = useAuth();
-  const { pets, appointments } = useData();
+  const { pets, appointments, records } = useData();
   const myPets = pets.filter((p) => p.ownerId === user.id);
+  const myPetIds = myPets.map((p) => p.id);
   const upcoming = appointments
     .filter((a) => a.ownerId === user.id && isActive(a) && a.date >= todayISO())
     .sort(sortByDateTime);
+  const reminders = records
+    .filter((r) => myPetIds.includes(r.petId) && r.nextControl && r.nextControl >= todayISO())
+    .sort((a, b) => a.nextControl.localeCompare(b.nextControl));
 
   return (
     <>
       <div className="grid grid-3">
         <StatCard label="Mascotas" value={myPets.length} />
         <StatCard label="Próximos turnos" value={upcoming.length} />
+        <StatCard label="Controles pendientes" value={reminders.length} />
       </div>
+
+      {reminders.length > 0 && (
+        <section>
+          <h2>Recordatorios</h2>
+          {reminders.map((r) => (
+            <div key={r.id} className="card reminder">
+              <strong>{myPets.find((p) => p.id === r.petId)?.name}</strong> tiene control el{" "}
+              <strong>{formatDate(r.nextControl)}</strong>. <Link to="/turnos">Pedir turno</Link>
+            </div>
+          ))}
+        </section>
+      )}
 
       <section>
         <div className="section-head">
